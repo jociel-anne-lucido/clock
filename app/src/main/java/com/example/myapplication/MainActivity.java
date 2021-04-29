@@ -8,9 +8,11 @@ import android.widget.TextView;
 
 import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 ConstraintLayout layout;
+TextView calculatedTime;
 TextView textView;
 
     @Override
@@ -18,9 +20,16 @@ TextView textView;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView=findViewById(R.id.greetings);
+        calculatedTime=findViewById(R.id.time1);
 
         Calendar calendar = Calendar.getInstance();
         String currentDate= DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+
+        calendar.add(Calendar.MINUTE, 15);
+        String result = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+        calculatedTime.setText(result);
+
+
         TextView textViewDate = findViewById(R.id.date);
         textViewDate.setText(currentDate);
 
